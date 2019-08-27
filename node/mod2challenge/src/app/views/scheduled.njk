@@ -1,0 +1,33 @@
+{% extends "_layouts/default.njk" %} {% block body %}
+<div class="content">
+  <strong>Olá, {{ user.name }}</strong>
+
+  {% if appointments[0] %}
+  <p>Abaixo estão os horários dos agendamentos de hoje:</p>
+
+  <ul class="providers">
+    {% for appointment in appointments %}
+    <li class="provider">
+      <div>
+        <strong>
+          {{
+            appointment.date.toLocaleDateString("pt-BR", {
+              hour: "numeric",
+              minute: "numeric",
+              hour12: false,
+              timezone: "America/Sao_Paulo"
+            })
+          }}</strong
+        >
+      </div>
+      <a href="/app/appointments/scheduled/{{ appointment.id }}">+</a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>Você não possui agendamentos hoje</p>
+  {% endif %}
+
+  <a href="/app/logout" class="logout">Sair</a>
+</div>
+{% endblock %}

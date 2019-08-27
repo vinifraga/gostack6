@@ -1,0 +1,27 @@
+{% extends "_layouts/default.njk" %} {% block body %}
+<div class="content">
+  <ul class="providers">
+    <li class="provider">
+      <div>
+        <img src="/files/{{ appointment.User.avatar }}" />
+        <strong>
+          {{
+            appointment.date.toLocaleDateString("pt", {
+              weekday: "long",
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+              hour: "numeric",
+              minute: "numeric",
+              hour12: false,
+              timezone: "America/Sao_Paulo"
+            })
+          }}</strong
+        >
+        <strong> {{ appointment.User.name }}</strong>
+      </div>
+    </li>
+    <a href="/app/dashboard">Voltar</a>
+  </ul>
+</div>
+{% endblock %}
